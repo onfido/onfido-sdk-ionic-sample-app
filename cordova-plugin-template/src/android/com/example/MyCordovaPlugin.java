@@ -49,7 +49,7 @@ public class MyCordovaPlugin extends CordovaPlugin {
   }
 
   public boolean execute(String action, JSONArray args, final CallbackContext callbackContext) throws JSONException {
-    if(action.equals("startSdk")) {
+    if(action.equals("launchFido")) {
       Activity context=this.cordova.getActivity();
       client = OnfidoFactory.create(context).getClient();
 
@@ -79,12 +79,12 @@ client.startActivityForResult(context, 1, onfidoConfig);
     return Applicant.builder()
             .withFirstName("Ionic")
             .withLastName("User")
-            .withToken("YOUR_MOBILE_TOKEN")
             .build();
   }
 
   private OnfidoConfig.Builder getTestOnfidoConfigBuilder() {
       return OnfidoConfig.builder()
+			  .withToken("YOUR_MOBILE_TOKEN")
               .withApplicant(getTestApplicant());
   }
 }

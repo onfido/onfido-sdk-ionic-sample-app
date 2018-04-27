@@ -11,4 +11,9 @@ export class HomePage {
 
   }
 
+  startSdk() {
+	(<any>window).MyCordovaPlugin.launchFido(function() {
+        // callback
+    });
+  }
 }
